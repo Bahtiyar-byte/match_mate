@@ -62,7 +62,7 @@ class PersonLineWidget extends StatelessWidget {
                 tip.imageSmallWidget(),
                 SizedBox(width: 8.0),
                 // Используйте светлый цвет текста для контраста с темным фоном
-                Text('${tip.name}:', style: theme.textTheme.subtitle1?.copyWith(color: Colors.white)),
+                Text('${tip.name}:', style: theme.textTheme.subtitle1?.copyWith(color: Colors.black)),
               ],
             ),
           ),
