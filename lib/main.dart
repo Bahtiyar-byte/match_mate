@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:match_mate/screens/splash_screen.dart';
-import 'package:match_mate/custom_widgets/story_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:match_mate/datastore/data_context.dart';
+
+import 'custom_widgets/mates_top_list_notifier.dart';
 
 
 void main() async {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => StoryNotifier()),
+        ChangeNotifierProvider(create: (_) => MatesTopListNotifier()),
         ChangeNotifierProvider(create: (context) => DataContext()),
       ],
       child: MaterialApp(

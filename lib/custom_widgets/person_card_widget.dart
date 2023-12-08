@@ -21,7 +21,7 @@ class PersonCardWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Bahtiyars Hobbies', style: theme.textTheme.headline6?.copyWith(color: theme.textTheme.bodyLarge?.color)),
+              Text('Person card', style: theme.textTheme.headline6?.copyWith(color: theme.textTheme.bodyLarge?.color)),
               SizedBox(height: 8),
               Image.asset(person.imageAsset(), fit: BoxFit.cover),
               SizedBox(height: 8),

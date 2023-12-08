@@ -1,41 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:match_mate/datastore/data_tip.dart';
+import 'package:match_mate/datastore/data_hobby.dart';
 import 'package:provider/provider.dart';
-
 import '../datastore/data_context.dart';
 
-class TipItemWidget extends StatelessWidget {
-  final Tip tip;
-  final void Function(Tip) onTipSelected;
-  final bool showBorder; // параметр для управления видимостью рамки
-  final double padding; // параметр для управления отступом
+class HobbyItemWidget extends StatelessWidget {
+  final Hobby hobby;
+  final void Function(Hobby) onHobbySelected;
+  final bool showBorder; // Параметр для управления видимостью рамки
+  final double padding; // Параметр для управления отступом
 
-  TipItemWidget({
-    required this.tip,
-    required this.onTipSelected,
+  HobbyItemWidget({
+    required this.hobby,
+    required this.onHobbySelected,
     this.showBorder = true, // по умолчанию рамка будет показываться
     this.padding = 20.0, // по умолчанию отступ в 20 пикселей
   });
 
   @override
   Widget build(BuildContext context) {
-    // Получаем доступ к DataContext
     final dataContext = Provider.of<DataContext>(context);
+    final isSubscribed = dataContext.user?.haveHobby(hobby) ?? false;
 
-    final isSubscribed = dataContext.user?.haveTip(tip) != null;
-
-    // Используем Padding для создания отступа вокруг контейнера
     return Padding(
-      padding: EdgeInsets.all(padding), // применяем заданный отступ
+      padding: EdgeInsets.all(padding), // Применение заданного отступа
       child: InkWell(
-        onTap: () => onTipSelected(tip),
+        onTap: () {
+          if (isSubscribed) {
+            dataContext.user?.removeHobby(hobby);
+          } else {
+            dataContext.user?.subscribeToHobby(hobby);
+          }
+          dataContext.notifyListeners(); // Обновляем UI
+          onHobbySelected(hobby); // Дополнительные действия при нажатии
+        },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            border: showBorder // условие для показа или скрытия рамки
+            border: showBorder // Условие для показа или скрытия рамки
                 ? Border.all(color: Colors.blue, width: 2)
-                : null, // нет рамки
-            color: isSubscribed ? Colors.lightGreen : null, // изменено здесь
+                : null, // Нет рамки
+            color: isSubscribed ? Colors.lightGreen : null, // Изменено здесь
           ),
           child: Column(
             children: [
@@ -44,7 +48,7 @@ class TipItemWidget extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
-                    tip.imageAsset(),
+                    hobby.imageAsset(),
                     errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
                       return Image.asset('assets/default_image.png');
                     },
@@ -55,7 +59,7 @@ class TipItemWidget extends StatelessWidget {
               Expanded(
                 child: Center(
                   child: Text(
-                    tip.name,
+                    hobby.name,
                     style: TextStyle(fontSize: 16, color: isSubscribed ? Colors.white : Colors.black),
                   ),
                 ),

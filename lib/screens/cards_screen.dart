@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:match_mate/custom_widgets/cards_swipe_widget.dart';
 import 'package:match_mate/custom_widgets/popup_menu_widget.dart';
-import 'package:match_mate/custom_widgets/story_widget.dart';
+import 'package:match_mate/custom_widgets/mates_top_list_widget.dart';
 import 'package:match_mate/screens/tips_screen.dart';
 import 'package:match_mate/datastore/data_context.dart';
 import 'package:provider/provider.dart';
-import 'package:match_mate/custom_widgets/story_notifier.dart';
+import 'package:match_mate/custom_widgets/mates_top_list_notifier.dart';
 import 'package:match_mate/custom_widgets/custom_app_bar_widget.dart';
 import 'package:match_mate/custom_widgets/menu_actions_handler.dart';
 
@@ -13,7 +13,7 @@ class CardsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => StoryNotifier(),
+      create: (context) => MatesTopListNotifier(),
       child: _CardsScreenBody(),
     );
   }
@@ -48,7 +48,7 @@ class _CardsScreenState extends State<_CardsScreenBody> {
             });
           }),
           Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
-          StoryWidget(people: dataContext.persons),
+          MatesTopListWidget(people: dataContext.persons),
           Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
           Expanded(child: CardsSwipeWidget(peopleList: dataContext.persons)),  // Изменение здесь
           Row(

@@ -1,60 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:match_mate/screens/major_screen.dart';
-import 'package:match_mate/datastore/data_tip.dart';
-import 'package:match_mate/custom_widgets/tips_list_widget.dart';
-import 'package:match_mate/screens/hobbies_screen.dart';
+import 'package:match_mate/custom_widgets/vertical_persons_list_widget.dart';
 import 'package:match_mate/datastore/data_context.dart';
+import 'package:match_mate/custom_widgets/custom_app_bar_widget.dart';
 import 'package:provider/provider.dart';
-import 'package:match_mate/screens/screen_manager.dart';
 
-class PersonTipsScreen extends StatefulWidget {
+class PersonsScreen extends StatefulWidget {
   @override
-  _PersonTipsScreenState createState() => _PersonTipsScreenState();
+  _PersonsScreenState createState() => _PersonsScreenState();
 }
 
-class _PersonTipsScreenState extends State<PersonTipsScreen> {
+class _PersonsScreenState extends State<PersonsScreen> {
   late DataContext dataContext;
+  bool _isSearchVisible = false;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     dataContext = Provider.of<DataContext>(context);
-
-  }
-  bool _isSearchVisible = false;
-
-  void _handleTipSelected(Tip tip) {
-    ScreenManager.openPersonHobbiesScreen(context, tip);
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    if (dataContext.user != null) {
-      print("user:");
-      print(dataContext.user?.name);
-    }
-    else
-      print("user: = null");
+
     return Scaffold(
       backgroundColor: theme.colorScheme.background,
       body: Column(
         children: [
-
+          CustomAppBar(isSearchVisible: _isSearchVisible, onSearchToggle: (isVisible) {
+            setState(() {
+              _isSearchVisible = isVisible;
+            });
+          }),
           Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
-
-          TipsListWidget(
-            tips: dataContext.user?.subscribedTips ?? [], // Используйте оператор условного доступа и пустой список в качестве запасного значения
-            onTipSelected: _handleTipSelected,
-          ),
-
+          VerticalPersonsListWidget(peopleList: dataContext.persons),
           ElevatedButton(
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => MajorScreen(),
-                ),
-              );
+              // Тут можно реализовать логику для кнопки "Skip"
             },
             style: ElevatedButton.styleFrom(
               primary: Theme.of(context).hintColor,
@@ -65,7 +47,7 @@ class _PersonTipsScreenState extends State<PersonTipsScreen> {
               minimumSize: Size(double.infinity, 0),
             ),
             child: Text(
-              'Back',
+              'Skip',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 16,

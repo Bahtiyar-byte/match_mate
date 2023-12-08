@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:match_mate/datastore/data_person.dart';
 
-class StoryNotifier extends ChangeNotifier {
+class MatesTopListNotifier extends ChangeNotifier {
   Person? _selectedPerson;
 
   Person? get selectedPerson => _selectedPerson;

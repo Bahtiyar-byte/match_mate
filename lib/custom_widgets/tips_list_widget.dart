@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:match_mate/datastore/data_tip.dart';
 import 'package:match_mate/custom_widgets/tip_item_widget.dart';
 
+
 class TipsListWidget extends StatelessWidget {
   final List<Tip> tips;
   final void Function(Tip) onTipSelected;
@@ -32,7 +33,7 @@ class TipsListWidget extends StatelessWidget {
               ),
               itemCount: tipsInBlock.length,
               itemBuilder: (context, index) {
-                return TipItemWidget(tip: tipsInBlock[index], onTipSelected: onTipSelected);
+                return TipItemWidget(tip: tipsInBlock[index], onTipSelected: onTipSelected,showBorder: false);
               },
             ),
           );

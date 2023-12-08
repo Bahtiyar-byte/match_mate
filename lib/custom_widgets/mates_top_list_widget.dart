@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:match_mate/datastore/data_person.dart';
-import 'package:match_mate/custom_widgets/story_notifier.dart';
+import 'package:match_mate/custom_widgets/mates_top_list_notifier.dart';
 import 'package:provider/provider.dart';
 
-class StoryWidget extends StatelessWidget {
+class MatesTopListWidget extends StatelessWidget {
   final List<Person> people;
   final ScrollController _controller = ScrollController();
 
-  StoryWidget({required this.people});
+  MatesTopListWidget({required this.people});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<StoryNotifier>(
+    return Consumer<MatesTopListNotifier>(
       builder: (context, storyNotifier, child) {
         return SizedBox(
-          height: 121,
+          height: 120,
           child: ListView.builder(
+
             controller: _controller,
             scrollDirection: Axis.horizontal,
             itemCount: people.length,

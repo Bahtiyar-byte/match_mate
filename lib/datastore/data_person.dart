@@ -3,7 +3,6 @@ import 'package:match_mate/datastore/data_tip.dart';
 
 class Person {
 
-
   int id;
   String name;
   String surname;
@@ -11,6 +10,8 @@ class Person {
   DateTime birthdate;
   String description;
   String imageUrl;
+  int distanceMiles = 5;
+  List<Tip> subscribedTips = [];
 
   Person({
     required this.id,
@@ -20,7 +21,10 @@ class Person {
     required this.birthdate,
     required this.description,
     required this.imageUrl,
-  });
+
+  }
+
+  );
 
   int getAge() {
     final currentDate = DateTime.now();
@@ -33,7 +37,7 @@ class Person {
     return age;
   }
 
-  List<Tip> subscribedTips = [];
+
 
 
   String imageAsset()
@@ -41,30 +45,13 @@ class Person {
     return "assets/cards/$imageUrl";
   }
 
-  Tip? findSubscribedTip(Tip tip)
-  {
-    try
-    {
-      return subscribedTips.firstWhere((t) => t == tip);
-    }
-    catch (e)
-    {
-      return null;
-    }
-  }
-
-  void subscribeToTip(Tip tip) {
-    if (!subscribedTips.contains(tip)) {
-      subscribedTips.add(tip);
-    }
-  }
-
-  bool haveTip(Tip tip)
-  {
-    if (tip == null) {
-      return false;
-    }
-      return subscribedTips.contains(tip);
+  Tip? haveTip(Tip tip) {
+    for (Tip t in subscribedTips)
+      {
+        if (t.name  == tip.name)
+          return t;
+      }
+    return null;
   }
 
   bool haveHobby(Hobby hobby)
@@ -79,20 +66,19 @@ class Person {
      return false;
   }
 
-  void subscribeToHobby(Hobby hobby)
-  {
-      if (!haveHobby(hobby))
-      {
-            Tip? subscribedTip = findSubscribedTip(hobby.tip);
-            if (subscribedTip == null)
-            {
-                subscribedTips.add(hobby.tip);
-                subscribedTip = subscribedTips.last;
-            }
-            subscribedTip.hobbies.add(hobby);
+  void subscribeToHobby(Hobby hobby) {
+    if (!haveHobby(hobby)) {
+      Tip? subscribedTip = haveTip(hobby.tip);
 
+      if (subscribedTip == null) {
+        Tip subTip = Tip.copy(hobby.tip);
+        subscribedTips.add(subTip);
+        subscribedTip = subTip;
       }
+      subscribedTip.hobbies.add(hobby);
+    }
   }
+
 
   void removeHobby(Hobby hobby)
   {
