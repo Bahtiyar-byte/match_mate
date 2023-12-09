@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:match_mate/datastore/data_tip.dart';
 import 'package:match_mate/datastore/data_context.dart';
 import 'package:provider/provider.dart';
-import 'package:match_mate/custom_widgets/menu/custom_app_bar_widget.dart';
 import 'package:match_mate/screens/screen_manager.dart';
 import 'package:match_mate/custom_widgets/interests/tips_list_widget.dart';
 
@@ -47,7 +46,7 @@ class _TipsScreenState extends State<TipsScreen> {
             padding: const EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 20.0),
             child: ElevatedButton(
               onPressed: () {
-                ScreenManager.openMajorScreen(context);
+                ScreenManager.openPersonsScreen(context);
               },
               style: ElevatedButton.styleFrom(
                 primary: theme.hintColor,

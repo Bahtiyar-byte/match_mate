@@ -8,6 +8,8 @@ class DataContext extends ChangeNotifier{
   List<Person> persons = [];
   Person? activePerson;
   Person? user;
+
+  bool isPersonSelectHobbyMode = false;// если находится в окне добавления хобби из подписанных хоббей
   DataContext() {
     activePerson = null;
     user = null;

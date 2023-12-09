@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:match_mate/custom_widgets/menu/match_app_bar_widget.dart';
 import 'package:match_mate/custom_widgets/persons/person_card_widget.dart';
 import 'package:match_mate/custom_widgets/persons/mates_top_list_notifier.dart';
-import 'package:match_mate/custom_widgets/persons/mates_top_list_widget.dart';
 import 'package:match_mate/screens/screen_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:match_mate/datastore/data_context.dart';
@@ -41,22 +40,22 @@ class _MajorScreenState extends State<_MajorScreenBody> {
         child: Column(
           children: [
             MatchAppBar(
-                isSearchVisible: _isSearchVisible,
-                onSearchToggle: (isVisible) {
-                  setState(() {
-                    _isSearchVisible = isVisible;
-                  });
-                }),
+              isSearchVisible: _isSearchVisible,
+              onSearchToggle: (isVisible) {
+                setState(() {
+                  _isSearchVisible = isVisible;
+                });
+              },
+            ),
             Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
-            MatesTopListWidget(people: dataContext.persons),
             Expanded(
               child: Consumer<MatesTopListNotifier>(
                 builder: (context, storyNotifier, child) {
-                  return storyNotifier.selectedPerson != null
-                      ? SingleChildScrollView(
-                    child: PersonCardWidget(selectedPerson: storyNotifier.selectedPerson),
-                  )
-                      : Center(child: Text('Select a person to see details'));
+                  return SingleChildScrollView(
+                    child: storyNotifier.selectedPerson != null
+                        ? PersonCardWidget(selectedPerson: storyNotifier.selectedPerson)
+                        : Center(child: Text('Select a person to see details')),
+                  );
                 },
               ),
             ),

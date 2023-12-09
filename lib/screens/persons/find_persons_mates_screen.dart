@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:match_mate/custom_widgets/persons/vertical_persons_list_widget.dart';
 import 'package:match_mate/datastore/data_context.dart';
-import 'package:match_mate/custom_widgets/menu/custom_app_bar_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:match_mate/screens/common/major_screen.dart';
+
+import '../../custom_widgets/menu/find_app_bar_widget.dart';
 
 class PersonsScreen extends StatefulWidget {
   @override
@@ -28,7 +29,7 @@ class _PersonsScreenState extends State<PersonsScreen> {
       backgroundColor: theme.colorScheme.background,
       body: Column(
         children: [
-          CustomAppBar(isSearchVisible: _isSearchVisible, onSearchToggle: (isVisible) {
+          FindAppBar(isSearchVisible: _isSearchVisible, onSearchToggle: (isVisible) {
             setState(() {
               _isSearchVisible = isVisible;
             });
@@ -52,7 +53,7 @@ class _PersonsScreenState extends State<PersonsScreen> {
                 minimumSize: Size(double.infinity, 0),
               ),
               child: Text(
-                'Back',
+                'Match mates',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,

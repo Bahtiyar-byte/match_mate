@@ -27,8 +27,8 @@ class PopupMenuWidget extends StatelessWidget {
           value: 'FindMates',
         ),
         PopupMenuItem(
-          child: Text('Settings'),
-          value: 'Settings',
+          child: Text('Matched mates'),
+          value: 'MatchedMates',
         ),
         PopupMenuItem(
           child: Text('Log Out'),

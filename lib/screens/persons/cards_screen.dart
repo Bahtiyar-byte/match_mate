@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:match_mate/custom_widgets/persons/cards_swipe_widget.dart';
+
 import 'package:match_mate/custom_widgets/menu/popup_menu_widget.dart';
 import 'package:match_mate/custom_widgets/persons/mates_top_list_widget.dart';
 import 'package:match_mate/screens/interests/tips_screen.dart';
 import 'package:match_mate/datastore/data_context.dart';
 import 'package:provider/provider.dart';
 import 'package:match_mate/custom_widgets/persons/mates_top_list_notifier.dart';
-import 'package:match_mate/custom_widgets/menu/custom_app_bar_widget.dart';
 import 'package:match_mate/custom_widgets/menu/menu_actions_handler.dart';
+
+import '../../custom_widgets/menu/match_app_bar_widget.dart';
+import '../../custom_widgets/persons/match_mate_card_detail_widget.dart';
 
 class CardsScreen extends StatelessWidget {
   @override
@@ -42,7 +44,7 @@ class _CardsScreenState extends State<_CardsScreenBody> {
       backgroundColor: theme.colorScheme.background,
       body: Column(
         children: [
-          CustomAppBar(isSearchVisible: _isSearchVisible, onSearchToggle: (isVisible) {
+          MatchAppBar(isSearchVisible: _isSearchVisible, onSearchToggle: (isVisible) {
             setState(() {
               _isSearchVisible = isVisible;
             });
@@ -50,7 +52,7 @@ class _CardsScreenState extends State<_CardsScreenBody> {
           Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
           MatesTopListWidget(people: dataContext.persons),
           Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
-          Expanded(child: CardsSwipeWidget(peopleList: dataContext.persons)),  // Изменение здесь
+          Expanded(child: MatchMateCardDetailWidget(peopleList: dataContext.persons)),  // Изменение здесь
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

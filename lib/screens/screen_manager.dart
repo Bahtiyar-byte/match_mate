@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:match_mate/screens/persons/find_persons_mates_screen.dart';
 import 'common/login_screen.dart';
 import 'interests/tips_screen.dart';
 import 'interests/hobbies_screen.dart';
@@ -6,7 +7,7 @@ import 'interests/person_tips_screen.dart';
 import 'interests/person_hobbies_screen.dart';
 import 'common/major_screen.dart';
 import 'common/splash_screen.dart';
-import 'persons/persons_screen.dart';
+
 import 'package:match_mate/datastore/data_tip.dart';
 
 class ScreenManager {
