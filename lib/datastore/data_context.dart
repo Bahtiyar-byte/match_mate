@@ -17,6 +17,17 @@ class DataContext extends ChangeNotifier{
     initTestData();
   }
 
+  Tip? getTip(Tip tip)
+  {
+        for(Tip t in tips)
+              {
+                    if (t.name == tip.name)
+                          {
+                                return t;
+                          }
+              }
+        return null;
+  }
 
   void initTestData()
   {

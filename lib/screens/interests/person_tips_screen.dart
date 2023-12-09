@@ -31,6 +31,13 @@ class _PersonTipsScreenState extends State<PersonTipsScreen> {
     final theme = Theme.of(context);
 
     return Scaffold(
+
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: theme.colorScheme.background,
+        title: Text('Selected interests:', style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
+        centerTitle: true,
+      ),
       backgroundColor: theme.colorScheme.background,
       body: Column(
         children: [

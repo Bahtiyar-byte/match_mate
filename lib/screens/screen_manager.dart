@@ -45,11 +45,10 @@ class ScreenManager {
     );
   }
 
-  // Метод для перехода на экран увлечений
-  static void openHobbiesScreen(BuildContext context, Tip tip) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => HobbiesScreen(tip: tip)),
-    );
+  static void openHobbiesScreen(BuildContext context, Tip tip, bool returnToPersonHobbies) {
+  Navigator.of(context).push(
+  MaterialPageRoute(builder: (context) => HobbiesScreen(tip: tip, returnToPersonHobbies: returnToPersonHobbies)),
+  );
   }
 
   static void openPersonHobbiesScreen(BuildContext context, Tip tip) {

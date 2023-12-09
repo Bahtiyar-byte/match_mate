@@ -22,24 +22,49 @@ class HobbyItemWidget extends StatelessWidget {
     final isSubscribed = dataContext.user?.haveHobby(hobby) ?? false;
 
     return Padding(
-      padding: EdgeInsets.all(padding), // Применение заданного отступа
+      padding: EdgeInsets.all(padding),
       child: InkWell(
         onTap: () {
           if (isSubscribed) {
-            dataContext.user?.removeHobby(hobby);
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text('Confirm'),
+                  content: Text('Are you sure you want to unsubscribe from this hobby?'),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text('Cancel'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    TextButton(
+                      child: Text('Unsubscribe'),
+                      onPressed: () {
+                        dataContext.user?.removeHobby(hobby);
+                        dataContext.notifyListeners();
+                        Navigator.of(context).pop();
+                        onHobbySelected(hobby);
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
           } else {
             dataContext.user?.subscribeToHobby(hobby);
+            dataContext.notifyListeners();
+            onHobbySelected(hobby);
           }
-          dataContext.notifyListeners(); // Обновляем UI
-          onHobbySelected(hobby); // Дополнительные действия при нажатии
         },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            border: showBorder // Условие для показа или скрытия рамки
+            border: showBorder
                 ? Border.all(color: Colors.blue, width: 2)
-                : null, // Нет рамки
-            color: isSubscribed ? Colors.lightGreen : null, // Изменено здесь
+                : null,
+            color: isSubscribed ? Colors.lightGreen : null,
           ),
           child: Column(
             children: [
@@ -71,4 +96,3 @@ class HobbyItemWidget extends StatelessWidget {
     );
   }
 }
-

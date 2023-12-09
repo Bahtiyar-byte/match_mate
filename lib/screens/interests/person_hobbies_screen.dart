@@ -29,76 +29,81 @@ class _PesronHobbiesScreenState extends State<PersonHobbiesScreen> {
 
   bool _isSearchVisible = false;
 
-  void _handleTipSelected(Hobby hobby) {
-
-  }
+  void _handleTipSelected(Hobby hobby) {}
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    print("tips");
-    print(widget.tip.name);
-    print("hobbies");
 
-    print(widget.tip.hobbies.length);
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: theme.colorScheme.background,
+        title: Text('Selected hobbies:', style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
+        centerTitle: true,
+      ),
       backgroundColor: theme.colorScheme.background,
       body: Column(
         children: [
-          // Custom AppBar
-
           Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
-          HobbiesListWidget(hobbies: widget.tip.hobbies, onHobbySelected: _handleTipSelected),
+          Expanded(
+            child: HobbiesListWidget(hobbies: widget.tip.hobbies, onHobbySelected: _handleTipSelected),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    ScreenManager.openPersonTipsScreen(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: theme.hintColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    minimumSize: Size(150, 0),
+                  ),
+                  child: Text(
+                    'Back',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () {
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  ScreenManager.openPersonTipsScreen(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).hintColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
+                    Tip? t = dataContext.getTip(widget.tip);
+                    if (t !=null) {
+                      ScreenManager.openHobbiesScreen(context, t, true);
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: theme.hintColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    minimumSize: Size(150, 0),
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                  minimumSize: Size(150, 0),
-                ),
-                child: Text(
-                  'Tips',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              SizedBox(width: 20),
-              ElevatedButton(
-                onPressed: () {
-                  ScreenManager.openTipsScreen(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).hintColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                  minimumSize: Size(150, 0),
-                ),
-                child: Text(
-                  'Add new',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+                  child: Text(
+                    'Add new',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 }
-

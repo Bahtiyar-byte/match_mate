@@ -5,13 +5,15 @@ import 'package:match_mate/screens/common/major_screen.dart';
 import 'package:match_mate/datastore/data_context.dart';
 import 'package:match_mate/datastore/data_tip.dart';
 import 'package:match_mate/datastore/data_hobby.dart';
+import 'package:match_mate/screens/screen_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:match_mate/custom_widgets/menu/custom_app_bar_widget.dart';
 
 class HobbiesScreen extends StatefulWidget {
   final Tip tip;
+  final bool returnToPersonHobbies;
 
-  HobbiesScreen({required this.tip});
+  HobbiesScreen({required this.tip, this.returnToPersonHobbies = false});
 
   @override
   _HobbiesScreenState createState() => _HobbiesScreenState();
@@ -35,17 +37,16 @@ class _HobbiesScreenState extends State<HobbiesScreen> {
     final theme = Theme.of(context);
 
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: theme.colorScheme.background,
+        title: Text('Сhoose your hooby:', style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
+        centerTitle: true,
+      ),
       backgroundColor: theme.colorScheme.background,
       body: Column(
         children: [
-          CustomAppBar(
-              isSearchVisible: _isSearchVisible,
-              onSearchToggle: (isVisible) {
-                setState(() {
-                  _isSearchVisible = isVisible;
-                });
-              }
-          ),
+
           Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
           Expanded(
             child: HobbiesListWidget(hobbies: widget.tip.hobbies, onHobbySelected: _handleTipSelected),
@@ -57,9 +58,16 @@ class _HobbiesScreenState extends State<HobbiesScreen> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => TipsScreen()),
-                    );
+
+
+                      if (widget.returnToPersonHobbies)
+                      {
+                        ScreenManager.openPersonHobbiesScreen(context, widget.tip);
+                      }
+                      else
+                        {
+                          ScreenManager.openHobbiesScreen(context, widget.tip, false);
+                        }
                   },
                   style: ElevatedButton.styleFrom(
                     primary: theme.hintColor,

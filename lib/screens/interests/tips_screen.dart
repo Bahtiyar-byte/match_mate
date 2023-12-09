@@ -23,7 +23,7 @@ class _TipsScreenState extends State<TipsScreen> {
   bool _isSearchVisible = false;
 
   void _handleTipSelected(Tip tip) {
-    ScreenManager.openHobbiesScreen(context, tip);
+    ScreenManager.openHobbiesScreen(context, tip, false);
   }
 
   @override
@@ -31,21 +31,18 @@ class _TipsScreenState extends State<TipsScreen> {
     final theme = Theme.of(context);
 
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: theme.colorScheme.background,
+        title: Text('Сhoose your interest:', style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
+        centerTitle: true,
+      ),
       backgroundColor: theme.colorScheme.background,
       body: Column(
         children: [
-          CustomAppBar(
-              isSearchVisible: _isSearchVisible,
-              onSearchToggle: (isVisible) {
-                setState(() {
-                  _isSearchVisible = isVisible;
-                });
-              }
-          ),
+
           Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
           TipsListWidget(tips: dataContext.tips, onTipSelected: _handleTipSelected),
-
-          // Padding добавлен вокруг кнопки
           Padding(
             padding: const EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 20.0),
             child: ElevatedButton(
