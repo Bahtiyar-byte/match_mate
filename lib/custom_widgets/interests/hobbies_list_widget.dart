@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:match_mate/datastore/data_hobby.dart';
-import 'package:match_mate/custom_widgets/hobby_item_widget.dart';
+import 'package:match_mate/custom_widgets/interests/hobby_item_widget.dart';
 
 class HobbiesListWidget extends StatelessWidget {
   final List<Hobby> hobbies;

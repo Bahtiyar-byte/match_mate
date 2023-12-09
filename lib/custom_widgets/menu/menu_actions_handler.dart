@@ -11,14 +11,15 @@ class MenuActionsHandler {
     else if (value == 'FindMates') {
       ScreenManager.openPersonsScreen(context);
     }
-    else if (value == 'cabinet') {
 
-    }
 
-    else if (value == 'settings') {
+    else if (value == 'Settings')
+    {
       // Обработка "Settings"
-    } else if (value == 'logout') {
-
+    }
+    else if (value == 'Logout')
+    {
+      ScreenManager.openSpalashScreen(context);
     }
   }
 }

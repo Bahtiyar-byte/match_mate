@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:match_mate/custom_widgets/person_card_widget.dart';
+import 'package:match_mate/custom_widgets/persons/person_card_widget.dart';
 import 'package:match_mate/datastore/data_person.dart';
 
 

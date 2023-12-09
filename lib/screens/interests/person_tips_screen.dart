@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:match_mate/screens/major_screen.dart';
+import 'package:match_mate/screens/common/major_screen.dart';
 import 'package:match_mate/datastore/data_tip.dart';
-import 'package:match_mate/custom_widgets/tips_list_widget.dart';
-import 'package:match_mate/screens/hobbies_screen.dart';
+import 'package:match_mate/custom_widgets/interests/tips_list_widget.dart';
+import 'package:match_mate/screens/interests/hobbies_screen.dart';
 import 'package:match_mate/datastore/data_context.dart';
 import 'package:provider/provider.dart';
 import 'package:match_mate/screens/screen_manager.dart';

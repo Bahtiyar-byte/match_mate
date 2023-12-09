@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:match_mate/custom_widgets/vertical_persons_list_widget.dart';
+import 'package:match_mate/custom_widgets/persons/vertical_persons_list_widget.dart';
 import 'package:match_mate/datastore/data_context.dart';
-import 'package:match_mate/custom_widgets/custom_app_bar_widget.dart';
+import 'package:match_mate/custom_widgets/menu/custom_app_bar_widget.dart';
 import 'package:provider/provider.dart';
 
 class PersonsScreen extends StatefulWidget {

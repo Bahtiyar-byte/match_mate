@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:match_mate/screens/splash_screen.dart';
+import 'package:match_mate/screens/common/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:match_mate/datastore/data_context.dart';
 
-import 'custom_widgets/mates_top_list_notifier.dart';
+import 'custom_widgets/persons/mates_top_list_notifier.dart';
 
 
 void main() async {

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:match_mate/screens/login_screen.dart';
+import 'package:match_mate/screens/screen_manager.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -64,11 +64,7 @@ class SplashScreen extends StatelessWidget {
               SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => LoginScreen(),
-                    ),
-                  );
+                  ScreenManager.openLoginScreen(context);
                 },
                 style: ElevatedButton.styleFrom(
                   disabledForegroundColor: Colors.white,

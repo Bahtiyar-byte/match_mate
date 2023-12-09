@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:match_mate/custom_widgets/cards_swipe_widget.dart';
-import 'package:match_mate/screens/tips_screen.dart';
+import 'package:match_mate/custom_widgets/persons/cards_swipe_widget.dart';
+import 'package:match_mate/screens/interests/tips_screen.dart';
 import 'package:match_mate/datastore/data_context.dart';
 import 'package:provider/provider.dart';
-import 'package:match_mate/custom_widgets/custom_app_bar_widget.dart';
-import 'package:match_mate/custom_widgets/person_card_widget.dart';
+import 'package:match_mate/custom_widgets/menu/custom_app_bar_widget.dart';
+import 'package:match_mate/custom_widgets/persons/person_card_widget.dart';
 
-import '../custom_widgets/mates_top_list_notifier.dart';
-import '../custom_widgets/mates_top_list_widget.dart';
+import '../../custom_widgets/persons/mates_top_list_notifier.dart';
+import '../../custom_widgets/persons/mates_top_list_widget.dart';
 
 class MajorScreen extends StatelessWidget {
   @override

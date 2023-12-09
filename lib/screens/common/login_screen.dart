@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:match_mate/screens/tips_screen.dart';
+import 'package:match_mate/datastore/data_context.dart';
+import 'package:match_mate/screens/screen_manager.dart';
+import 'package:provider/provider.dart';
 
+import '../../datastore/data_context.dart';
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final dataContext = Provider.of<DataContext>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(
@@ -87,11 +92,7 @@ class LoginScreen extends StatelessWidget {
 
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => TipsScreen(),
-                    ),
-                  );
+                  ScreenManager.openMajorScreen(context);
                 },
                 style: ElevatedButton.styleFrom(
 
@@ -143,7 +144,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-
+                      ScreenManager.openMajorScreen(context);
 
                     },
                     style: ElevatedButton.styleFrom(
@@ -165,7 +166,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(width: 20),
                   ElevatedButton(
                     onPressed: () {
-                      // Обработчик нажатия кнопки Google
+                      ScreenManager.openMajorScreen(context);
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Theme.of(context).hintColor, //  цвет фона
@@ -197,7 +198,8 @@ class LoginScreen extends StatelessWidget {
                   TextButton(
                     child: Text('Sign up', style: TextStyle(color: Colors.black)),
                     onPressed: () {
-                      // Handle sign-up logic here
+                      dataContext.user?.subscribedTips = [];
+                      ScreenManager.openTipsScreen(context);
                     },
                   ),
                 ],

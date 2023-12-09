@@ -28,11 +28,11 @@ class PopupMenuWidget extends StatelessWidget {
         ),
         PopupMenuItem(
           child: Text('Settings'),
-          value: 'settings',
+          value: 'Settings',
         ),
         PopupMenuItem(
           child: Text('Log Out'),
-          value: 'logout',
+          value: 'Logout',
         ),
       ],
       onSelected: onMenuItemSelected,

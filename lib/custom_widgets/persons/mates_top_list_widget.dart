@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:match_mate/datastore/data_person.dart';
-import 'package:match_mate/custom_widgets/mates_top_list_notifier.dart';
+import 'package:match_mate/custom_widgets/persons/mates_top_list_notifier.dart';
 import 'package:provider/provider.dart';
 
 class MatesTopListWidget extends StatelessWidget {

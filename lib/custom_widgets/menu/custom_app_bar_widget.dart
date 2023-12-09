@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:match_mate/custom_widgets/popup_menu_widget.dart';
-import 'package:match_mate/custom_widgets/menu_actions_handler.dart';
+import 'package:match_mate/custom_widgets/menu/popup_menu_widget.dart';
+import 'package:match_mate/custom_widgets/menu/menu_actions_handler.dart';
 
 class CustomAppBar extends StatelessWidget {
   final bool isSearchVisible;

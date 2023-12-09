@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:match_mate/datastore/data_tip.dart';
-import 'package:match_mate/custom_widgets/tip_item_widget.dart';
+import 'package:match_mate/custom_widgets/interests/tip_item_widget.dart';
 
 
 class TipsListWidget extends StatelessWidget {
