@@ -16,7 +16,7 @@ class CardsSwipeWidget extends StatelessWidget {
       child: selectedPerson != null
           ? PersonCardWidget(person: selectedPerson!)
           : Center(
-        child: Text('Выберите персону из сторис'),
+
       ),
     );
   }

@@ -20,7 +20,23 @@ class PersonLineWidget extends StatelessWidget {
           children: [
             Expanded(
               flex: 1,
-              child: Image.asset(person.imageAsset(), fit: BoxFit.cover),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: Center(
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Image.asset(person.imageAsset(), fit: BoxFit.cover),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
             Expanded(
               flex: 2,
@@ -53,7 +69,6 @@ class PersonLineWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Выравнивание типсов по левому краю
           Align(
             alignment: Alignment.centerLeft,
             child: Row(
@@ -61,12 +76,10 @@ class PersonLineWidget extends StatelessWidget {
               children: [
                 tip.imageSmallWidget(),
                 SizedBox(width: 8.0),
-                // Используйте светлый цвет текста для контраста с темным фоном
                 Text('${tip.name}:', style: theme.textTheme.subtitle1?.copyWith(color: Colors.black)),
               ],
             ),
           ),
-          // Выравнивание хобби с отступом по левому краю
           Padding(
             padding: const EdgeInsets.only(left: 16.0),
             child: Column(
@@ -78,18 +91,15 @@ class PersonLineWidget extends StatelessWidget {
                   children: [
                     hobby.imageSmallWidget(),
                     SizedBox(width: 8.0),
-                    // Используйте светлый цвет текста для контраста с темным фоном
                     Text(hobby.name, style: theme.textTheme.bodyText2?.copyWith(color: Colors.black)),
                   ],
                 ),
               )).toList(),
             ),
           ),
-          // Добавление разделительной линии
           Divider(color: Colors.grey, height: 32.0),
         ],
       ),
     );
   }
-
 }

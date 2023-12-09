@@ -3,6 +3,7 @@ import 'package:match_mate/custom_widgets/persons/vertical_persons_list_widget.d
 import 'package:match_mate/datastore/data_context.dart';
 import 'package:match_mate/custom_widgets/menu/custom_app_bar_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:match_mate/screens/common/major_screen.dart';
 
 class PersonsScreen extends StatefulWidget {
   @override
@@ -34,23 +35,28 @@ class _PersonsScreenState extends State<PersonsScreen> {
           }),
           Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
           VerticalPersonsListWidget(peopleList: dataContext.persons),
-          ElevatedButton(
-            onPressed: () {
-              // Тут можно реализовать логику для кнопки "Skip"
-            },
-            style: ElevatedButton.styleFrom(
-              primary: Theme.of(context).hintColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 20.0),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => MajorScreen()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                primary: theme.hintColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 15),
+                minimumSize: Size(double.infinity, 0),
               ),
-              padding: EdgeInsets.symmetric(vertical: 15),
-              minimumSize: Size(double.infinity, 0),
-            ),
-            child: Text(
-              'Skip',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
+              child: Text(
+                'Back',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
               ),
             ),
           ),
