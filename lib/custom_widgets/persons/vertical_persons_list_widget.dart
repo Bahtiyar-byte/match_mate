@@ -35,7 +35,6 @@ class VerticalPersonsListWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               //child: PersonLineWidget(person: peopleList[index]),
                 child: PersonLineWidget(person: peopleList[index]),
-
             ),
           );
         },

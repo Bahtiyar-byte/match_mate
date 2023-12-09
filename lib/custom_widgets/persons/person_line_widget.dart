@@ -53,6 +53,33 @@ class PersonLineWidget extends StatelessWidget {
                       title: Text('Tips & Hobbies : ', style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
                       children: person.subscribedTips.map((tip) => _buildTipHobbies(tip, theme)).toList(),
                     ),
+
+                    TextButton(
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                      ),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                              title: Text('Notification'),
+                              content: Text('Your Match Request to ${person.name} is sent! 🎉'),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: Text('OK'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: Text('Send Match Request'),
+                    ),
                   ],
                 ),
               ),

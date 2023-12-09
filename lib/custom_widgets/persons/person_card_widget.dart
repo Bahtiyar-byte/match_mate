@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:match_mate/datastore/data_context.dart';
 import 'package:match_mate/datastore/data_person.dart';
+import 'package:match_mate/screens/common/chat_screen.dart';
 
 class PersonCardWidget extends StatelessWidget {
   final Person person;
@@ -28,6 +29,19 @@ class PersonCardWidget extends StatelessWidget {
               Text(person.name, style: theme.textTheme.headline6?.copyWith(color: theme.textTheme.bodyLarge?.color)),
               SizedBox(height: 8),
               Text(person.description, style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
+              Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  icon: Icon(Icons.chat), splashColor: Colors.lightBlue,
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ChatScreen(person: person),
+                      ),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),
@@ -35,5 +49,6 @@ class PersonCardWidget extends StatelessWidget {
     );
   }
 }
+
 
 
