@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:match_mate/datastore/data_person.dart';
 import 'package:match_mate/datastore/data_tip.dart';
 
+import '_persons_interests_hobbies_expand_widget.dart';
+
 class PersonLineWidget extends StatelessWidget {
   final Person person;
 
@@ -12,16 +14,16 @@ class PersonLineWidget extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(5.0),
       child: Card(
         color: theme.colorScheme.background,
-        elevation: 0,
+        elevation: 15,
         child: Row(
           children: [
             Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15.0),
@@ -41,19 +43,19 @@ class PersonLineWidget extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(person.name, style: theme.textTheme.headline6?.copyWith(color: theme.textTheme.bodyLarge?.color)),
+                    Text(person.name, style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500)),
                     SizedBox(height: 8),
-                    Text(person.description, style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
+                    Text(person.description, style: TextStyle(color: Colors.black87,)),
                     SizedBox(height: 8),
-                    ExpansionTile(
-                      title: Text('Tips & Hobbies : ', style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
-                      children: person.subscribedTips.map((tip) => _buildTipHobbies(tip, theme)).toList(),
-                    ),
 
+                    ExpansionTile(
+                      title: Text('Interests & Hobbies: ', style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
+                      children: person.subscribedTips.map((tip) => PersonTipHobbiesExpandWidget(tip, theme)).toList(),
+                    ),
                     TextButton(
                       style: ButtonStyle(
                         foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
@@ -79,53 +81,13 @@ class PersonLineWidget extends StatelessWidget {
                         );
                       },
                       child: Text('Send Match Request'),
-                    ),
+                    )
                   ],
                 ),
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildTipHobbies(Tip tip, ThemeData theme) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                tip.imageSmallWidget(),
-                SizedBox(width: 8.0),
-                Text('${tip.name}:', style: theme.textTheme.subtitle1?.copyWith(color: Colors.black)),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: tip.hobbies.map((hobby) => Align(
-                alignment: Alignment.centerLeft,
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    hobby.imageSmallWidget(),
-                    SizedBox(width: 8.0),
-                    Text(hobby.name, style: theme.textTheme.bodyText2?.copyWith(color: Colors.black)),
-                  ],
-                ),
-              )).toList(),
-            ),
-          ),
-          Divider(color: Colors.grey, height: 32.0),
-        ],
       ),
     );
   }

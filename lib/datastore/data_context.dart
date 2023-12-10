@@ -8,6 +8,8 @@ class DataContext extends ChangeNotifier{
   List<Person> persons = [];
   Person? activePerson;
   Person? user;
+
+  bool isPersonSelectHobbyMode = false;// если находится в окне добавления хобби из подписанных хоббей
   DataContext() {
     activePerson = null;
     user = null;
@@ -31,8 +33,6 @@ class DataContext extends ChangeNotifier{
 
   void initTestData()
   {
-
-
       initTipsData();
       initPersonsData();
   }
@@ -43,7 +43,7 @@ class DataContext extends ChangeNotifier{
                     return person;
               }
         }
-        return null; // Возвращаем null, если не нашли соответствующую персону
+        return null;
   }
 
   void initTipsData() {
@@ -55,33 +55,33 @@ class DataContext extends ChangeNotifier{
               imageUrl: "sports.png",
         );
         sports.hobbies = [
-              Hobby(id: 1, name: "Football", description: "Team sport with a round ball", imageUrl: "football.png", tip: sports),
+              Hobby(id: 1, name: "Soccer", description: "Team sport with a round ball", imageUrl: "football.png", tip: sports),
               Hobby(id: 2, name: "Basketball", description: "Team sport with a hoop and ball", imageUrl: "basketball.png", tip: sports),
               Hobby(id: 3, name: "Tennis", description: "Court or lawn game played with rackets", imageUrl: "tennis.png", tip: sports),
-              Hobby(id: 4, name: "Baseball", description: "Bat-and-ball game", imageUrl: "image_baseball.png", tip: sports),
+              Hobby(id: 4, name: "Baseball", description: "Bat-and-ball game", imageUrl: "baseball-player.png", tip: sports),
               Hobby(id: 5, name: "Cycling", description: "Using bicycles for transport or sport", imageUrl: "cycling.png", tip: sports),
               Hobby(id: 6, name: "Swimming", description: "Moving through water using limbs", imageUrl: "swimming.png", tip: sports),
-              Hobby(id: 7, name: "Running", description: "Moving rapidly on foot", imageUrl: "running.png", tip: sports),
-              Hobby(id: 8, name: "Badminton", description: "Racket sport with a shuttlecock", imageUrl: "badminton.png", tip: sports),
-              Hobby(id: 9, name: "Boxing", description: "Combat sport with punches", imageUrl: "boxing.png", tip: sports),
-              Hobby(id: 10, name: "Gymnastics", description: "Sport involving physical exercises", imageUrl: "gymnastics.png", tip: sports),
+              Hobby(id: 7, name: "Running", description: "Moving rapidly on foot", imageUrl: "run.png", tip: sports),
+              Hobby(id: 8, name: "Skiing", description: "Racket sport with a shuttlecock", imageUrl: "skiing.png", tip: sports),
+              Hobby(id: 9, name: "Mountain Bike", description: "Combat sport with punches", imageUrl: "bike.png", tip: sports),
+              Hobby(id: 10, name: "Gymnastics", description: "Sport involving physical exercises", imageUrl: "powerlifting.png", tip: sports),
         ];
         tips.add(sports);
 
 
         Tip tourism = Tip(
               id: 2,
-              name: "Tourism",
+              name: "Travel",
               description: "Travel and exploration.",
-              imageUrl: "tourism.png",
+              imageUrl: "travel.png",
         );
         tourism.hobbies = [
-              Hobby(id: 11, name: "Mountain Hiking", description: "Walking in nature on mountains.", imageUrl: "image_mountain_hiking.png", tip: tourism),
-              Hobby(id: 12, name: "Beach Vacations", description: "Relaxing on the beach.", imageUrl: "image_beach_vacation.png", tip: tourism),
-              Hobby(id: 13, name: "Cultural Exploration", description: "Exploring different cultures and traditions.", imageUrl: "image_cultural_exploration.png", tip: tourism),
-              Hobby(id: 14, name: "Cruise Trips", description: "Traveling by ship.", imageUrl: "image_cruise.png", tip: tourism),
+              Hobby(id: 11, name: "Hiking", description: "Walking in nature on mountains.", imageUrl: "hiking.png", tip: tourism),
+              Hobby(id: 12, name: "Beach Vacations", description: "Relaxing on the beach.", imageUrl: "swim.png", tip: tourism),
+              Hobby(id: 13, name: "Safari", description: "Exploring different cultures and traditions.", imageUrl: "safari.png", tip: tourism),
+              Hobby(id: 14, name: "Cruise Trips", description: "Traveling by ship.", imageUrl: "ske.png", tip: tourism),
               Hobby(id: 15, name: "Backpacking", description: "Traveling with a backpack.", imageUrl: "image_backpacking.png", tip: tourism),
-              Hobby(id: 16, name: "Safari", description: "Adventure trip to observe wildlife.", imageUrl: "image_safari.png", tip: tourism),
+              Hobby(id: 16, name: "Safari", description: "Adventure trip to observe wildlife.", imageUrl: "safari.png", tip: tourism),
               Hobby(id: 17, name: "City Tours", description: "Exploring major attractions in a city.", imageUrl: "image_city_tour.png", tip: tourism),
               Hobby(id: 18, name: "Island Hopping", description: "Visiting several islands.", imageUrl: "image_island_hopping.png", tip: tourism),
               Hobby(id: 19, name: "Diving", description: "Underwater exploration.", imageUrl: "image_diving.png", tip: tourism),
@@ -95,6 +95,11 @@ class DataContext extends ChangeNotifier{
               description: "Appreciation and creation of visual and performing art.",
               imageUrl: "art.png",
         );
+        art.hobbies = [
+              Hobby(id: 21, name: "Museum", description: "Walking in nature on mountains.", imageUrl: "museums.png", tip: art),
+              Hobby(id: 22, name: "Reading", description: "Walking in nature on mountains.", imageUrl: "reading.png", tip: art),
+
+        ];
         tips.add(art);
 
 
@@ -109,10 +114,17 @@ class DataContext extends ChangeNotifier{
 
         Tip cooking = Tip(
               id: 5,
-              name: "Cooking",
+              name: "Activities",
               description: "Preparing and making various dishes.",
-              imageUrl: "cooking.png",
+              imageUrl: "activities.png",
         );
+     cooking.hobbies = [
+           Hobby(id: 23, name: "Museums", description: "Walking in nature on mountains.", imageUrl: "run.png", tip: cooking),
+           Hobby(id: 24, name: "Reading", description: "Walking in nature on mountains.", imageUrl: "reading.png", tip: cooking),
+           Hobby(id: 25, name: "Dirt Bike", description: "Walking in nature on mountains.", imageUrl: "bike.png", tip: cooking),
+           Hobby(id: 26, name: "Walking with Pets", description: "Walking in nature on mountains.", imageUrl: "pets.png", tip: cooking),
+     ];
+
         tips.add(cooking);
 
         Tip reading = Tip(
@@ -180,11 +192,11 @@ class DataContext extends ChangeNotifier{
 
         user = Person(
               id: 0,
-              name: "Bahtiyar",
-              surname: "Haydarov",
+              name: "Brandon",
+              surname: "Hay",
               nickname: "Brandon",
               birthdate: DateTime(1986, 5, 10),
-              description: "Brandon loves to coding.",
+              description: "Brandon loves coding.",
               imageUrl: "0.jpeg",
         );
 
@@ -196,7 +208,7 @@ class DataContext extends ChangeNotifier{
               id: 1,
               name: "Alice",
               surname: "Smith",
-              nickname: "Ali",
+              nickname: "Alice Smith",
               birthdate: DateTime(1990, 5, 10),
               description: "Alice loves to travel and explore new places.",
               imageUrl: "1.jpeg",
@@ -214,11 +226,16 @@ class DataContext extends ChangeNotifier{
               id: 2,
               name: "Bob",
               surname: "Johnson",
-              nickname: "Bobby",
+              nickname: "Bob Johnson",
               birthdate: DateTime(1985, 3, 15),
               description: "Bob is passionate about football and sports in general.",
               imageUrl: "2.jpeg",
         );
+
+        bob.subscribeToHobby(tips[1].hobbies[1]);
+        bob.subscribeToHobby(tips[0].hobbies[2]);
+        bob.subscribeToHobby(tips[0].hobbies[0]);
+
         persons.add(bob);
 
 
@@ -227,11 +244,15 @@ class DataContext extends ChangeNotifier{
               id: 3,
               name: "David",
               surname: "Brown",
-              nickname: "Dave",
+              nickname: "David Brown",
               birthdate: DateTime(1987, 10, 30),
               description: "David is a foodie and loves cooking new recipes.",
               imageUrl: "3.jpeg",
         );
+
+        david.subscribeToHobby(tips[4].hobbies[2]);
+        david.subscribeToHobby(tips[2].hobbies[1]);
+        david.subscribeToHobby(tips[1].hobbies[2]);
         persons.add(david);
 
         // Person 4: Carol Williams
@@ -239,7 +260,7 @@ class DataContext extends ChangeNotifier{
               id: 4,
               name: "Carol",
               surname: "Williams",
-              nickname: "Caz",
+              nickname: "Carol Williams",
               birthdate: DateTime(1992, 8, 20),
               description: "Carol is an art lover and enjoys visiting museums.",
               imageUrl: "4.jpeg",
@@ -253,7 +274,7 @@ class DataContext extends ChangeNotifier{
               id: 6,
               name: "Eva",
               surname: "Jones",
-              nickname: "Evie",
+              nickname: "Eva Jones",
               birthdate: DateTime(1995, 1, 5),
               description: "Eva enjoys gardening and has a green thumb.",
               imageUrl: "6.jpeg",
@@ -265,7 +286,7 @@ class DataContext extends ChangeNotifier{
               id: 5,
               name: "Frank",
               surname: "Davis",
-              nickname: "Frankie",
+              nickname: "Frank Davis",
               birthdate: DateTime(1982, 6, 25),
               description: "Frank is a pet lover and has two cats.",
               imageUrl: "5.jpeg",
@@ -277,7 +298,7 @@ class DataContext extends ChangeNotifier{
               id: 8,
               name: "Grace",
               surname: "Wilson",
-              nickname: "Gracie",
+              nickname: "Grace Anderson",
               birthdate: DateTime(1998, 4, 15),
               description: "Grace loves reading and has a vast book collection.",
               imageUrl: "8.jpeg",
@@ -319,11 +340,5 @@ class DataContext extends ChangeNotifier{
               imageUrl: "9.jpeg",
         );
         persons.add(james);
-
-
   }
-
-
-
-
 }

@@ -14,7 +14,7 @@ class TipItemWidget extends StatelessWidget {
     required this.tip,
     required this.onTipSelected,
     this.showBorder = true, // по умолчанию рамка будет показываться
-    this.padding = 20.0, // по умолчанию отступ в 20 пикселей
+    this.padding = 10.0, // по умолчанию отступ в 20 пикселей
   });
 
   @override

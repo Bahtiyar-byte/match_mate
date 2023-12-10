@@ -22,9 +22,7 @@ class Person {
     required this.description,
     required this.imageUrl,
 
-  }
-
-  );
+  });
 
   int getAge() {
     final currentDate = DateTime.now();
@@ -36,9 +34,6 @@ class Person {
     }
     return age;
   }
-
-
-
 
   String imageAsset()
   {

@@ -35,7 +35,7 @@ class _PersonTipsScreenState extends State<PersonTipsScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: theme.colorScheme.background,
-        title: Text('Selected interests:', style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
+        title: Text('Selected interests', style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
         centerTitle: true,
       ),
       backgroundColor: theme.colorScheme.background,
@@ -61,7 +61,7 @@ class _PersonTipsScreenState extends State<PersonTipsScreen> {
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                    minimumSize: Size(150, 0),
+                    minimumSize: Size(140, 0),
                   ),
                   child: Text(
                     'Back',
@@ -79,7 +79,7 @@ class _PersonTipsScreenState extends State<PersonTipsScreen> {
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                    minimumSize: Size(150, 0),
+                    minimumSize: Size(140, 0),
                   ),
                   child: Text(
                     'Add',

@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 class PopupMenuWidget extends StatelessWidget {
   final void Function(String) onMenuItemSelected;
 
-  PopupMenuWidget({required this.onMenuItemSelected});
+  const PopupMenuWidget({required this.onMenuItemSelected});
 
   @override
   Widget build(BuildContext context) {
-    // Здесь мы используем Theme.of(context).scaffoldBackgroundColor,
-    // чтобы цвет фона меню соответствовал фону Scaffold
     Color menuBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
 
     return PopupMenuButton<String>(
@@ -16,9 +14,9 @@ class PopupMenuWidget extends StatelessWidget {
         padding: EdgeInsets.all(4),
         child: Image.asset('assets/images/menuB.png', width: 48, height: 48),
       ),
-      color: menuBackgroundColor, // Установка цвета фона меню
+      color: menuBackgroundColor,
       itemBuilder: (context) => [
-        PopupMenuItem(
+        const PopupMenuItem(
           child: Text('My hobbies'),
           value: 'MyHobbies',
         ),
@@ -27,8 +25,8 @@ class PopupMenuWidget extends StatelessWidget {
           value: 'FindMates',
         ),
         PopupMenuItem(
-          child: Text('Settings'),
-          value: 'Settings',
+          child: Text('Matched mates'),
+          value: 'MatchedMates',
         ),
         PopupMenuItem(
           child: Text('Log Out'),

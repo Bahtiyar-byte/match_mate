@@ -21,14 +21,14 @@ class TipsListWidget extends StatelessWidget {
           if (end > tips.length) end = tips.length;
           List<Tip> tipsInBlock = tips.sublist(start, end);
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 6.0), // Отступ между блоками
+            padding: const EdgeInsets.symmetric(vertical: 1.0), // Отступ между блоками
             child: GridView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, // Два столбца
-                crossAxisSpacing: 25, // Расстояние по ширине между блоками
-                mainAxisSpacing: 30, // Расстояние по высоте между блоками
+                crossAxisSpacing: 1, // Расстояние по ширине между блоками
+                mainAxisSpacing: 5, // Расстояние по высоте между блоками
                 childAspectRatio: 1 / 1, // Уменьшенное соотношение сторон для каждого блока
               ),
               itemCount: tipsInBlock.length,

@@ -6,7 +6,6 @@ import 'package:match_mate/datastore/data_context.dart';
 import 'package:match_mate/datastore/data_tip.dart';
 import 'package:match_mate/datastore/data_hobby.dart';
 import 'package:provider/provider.dart';
-import 'package:match_mate/custom_widgets/menu/custom_app_bar_widget.dart';
 import 'package:match_mate/screens/screen_manager.dart';
 
 class PersonHobbiesScreen extends StatefulWidget {
@@ -39,7 +38,7 @@ class _PesronHobbiesScreenState extends State<PersonHobbiesScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: theme.colorScheme.background,
-        title: Text('Selected hobbies:', style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
+        title: Text('Selected hobbies', style: TextStyle(color: theme.textTheme.bodyLarge?.color)),
         centerTitle: true,
       ),
       backgroundColor: theme.colorScheme.background,

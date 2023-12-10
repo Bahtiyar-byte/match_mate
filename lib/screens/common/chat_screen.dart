@@ -14,42 +14,42 @@ class ChatScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              children: [
-                ChatMessage(person: person, text: "Hi there! How's it going?", isSentByMe: false),
-                ChatMessage(person: person, text: "Hey! I'm good, thanks for asking. And you?", isSentByMe: true),
-                // Add more ChatMessages here to simulate more conversation
-              ],
+          children: [
+            Expanded(
+              child: ListView(
+                children: [
+                  ChatMessage(person: person, text: "Hi there! How's it going?", isSentByMe: false),
+                  ChatMessage(person: person, text: "Hey! I'm good, thanks for asking. And you?", isSentByMe: true),
+                  // Add more ChatMessages here to simulate more conversation
+                ],
+              ),
             ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Type a message",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "Type a message",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(width: 8.0),
-                IconButton(
-                  icon: Icon(Icons.send),
-                  onPressed: () {
-                    // Implement sending message functionality
-                  },
-                ),
-              ],
+                  SizedBox(width: 8.0),
+                  IconButton(
+                    icon: Icon(Icons.send),
+                    onPressed: () {
+                      // Implement sending message functionality
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
       )
     );
   }
@@ -91,4 +91,3 @@ class ChatMessage extends StatelessWidget {
     );
   }
 }
-

@@ -25,9 +25,6 @@ class VerticalPersonsListWidget extends StatelessWidget {
                 // Действие при смахивании вправо
                 // Например, можно вызвать функцию для обработки "нравится"
               }
-
-              // Удалить элемент из списка (или выполнить другое действие)
-               // peopleList.removeAt(index);
             },
             background: Container(color: Colors.red), // Фон при смахивании влево
             secondaryBackground: Container(color: Colors.green), // Фон при смахивании вправо
@@ -35,6 +32,7 @@ class VerticalPersonsListWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               //child: PersonLineWidget(person: peopleList[index]),
                 child: PersonLineWidget(person: peopleList[index]),
+
             ),
           );
         },
