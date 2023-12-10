@@ -60,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15.0),
                   ),
                 ),
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(color: Colors.black),
               ),
               SizedBox(height: 20), // Уменьшаем вертикальный отступ
               TextField(
@@ -74,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15.0),
                   ),
                 ),
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
               ),
 
               Align(
@@ -92,7 +92,7 @@ class LoginScreen extends StatelessWidget {
 
               ElevatedButton(
                 onPressed: () {
-                  ScreenManager.openMajorScreen(context);
+                  ScreenManager.openPersonsScreen(context);
                 },
                 style: ElevatedButton.styleFrom(
 
@@ -144,7 +144,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      ScreenManager.openMajorScreen(context);
+                      ScreenManager.openPersonsScreen(context);
 
                     },
                     style: ElevatedButton.styleFrom(
@@ -166,7 +166,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(width: 20),
                   ElevatedButton(
                     onPressed: () {
-                      ScreenManager.openMajorScreen(context);
+                      ScreenManager.openPersonsScreen(context);
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Theme.of(context).hintColor, //  цвет фона

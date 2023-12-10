@@ -31,7 +31,7 @@ class HobbyItemWidget extends StatelessWidget {
               builder: (BuildContext context) {
                 return AlertDialog(
                   title: Text('Confirm'),
-                  content: Text('Are you sure you want to unsubscribe from this hobby?'),
+                  content: Text('Are you sure you want to delete this hobby?'),
                   actions: <Widget>[
                     TextButton(
                       child: Text('Cancel'),
@@ -40,7 +40,7 @@ class HobbyItemWidget extends StatelessWidget {
                       },
                     ),
                     TextButton(
-                      child: Text('Unsubscribe'),
+                      child: Text('Delete'),
                       onPressed: () {
                         dataContext.user?.removeHobby(hobby);
                         dataContext.notifyListeners();

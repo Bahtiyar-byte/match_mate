@@ -13,9 +13,9 @@ class MenuActionsHandler {
     }
 
 
-    else if (value == 'Settings')
+    else if (value == 'MatchedMates')
     {
-      // Обработка "Settings"
+      ScreenManager.openMajorScreen(context);
     }
     else if (value == 'Logout')
     {

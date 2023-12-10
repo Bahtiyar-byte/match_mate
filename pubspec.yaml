@@ -37,20 +37,20 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^2.18.0
   google_fonts: ^6.1.0
+  provider: ^6.1.1
+  map_launcher: ^3.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   firebase_auth: ^4.11.0
 
-  provider: ^6.0.3
-
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -77,6 +77,7 @@ flutter:
       - assets/images/mateLogin.png
       - assets/images/search_icon.png
       - assets/images/splash_screen_final.png
+      - assets/images/match_mate_card_detail.png
 
 
       - assets/mates/1.jpg
@@ -113,13 +114,25 @@ flutter:
       - assets/tips/pets.png
       - assets/tips/hunting.png
       - assets/tips/reading.png
+      - assets/tips/activities.png
+      - assets/tips/travel.png
 
-      - assets/hobbies/run.png
-      - assets/hobbies/swim.png
-      - assets/hobbies/football.png
-      - assets/hobbies/powerlifting.png
-      - assets/hobbies/ske.png
+      - assets/hobbies/baseball-player.png
+      - assets/hobbies/basketball.png
       - assets/hobbies/bike.png
+      - assets/hobbies/cycling.png
+      - assets/hobbies/football.png
+      - assets/hobbies/hiking.png
+      - assets/hobbies/museums.png
+      - assets/hobbies/powerlifting.png
+      - assets/hobbies/reading.png
+      - assets/hobbies/run.png
+      - assets/hobbies/safari.png
+      - assets/hobbies/ske.png
+      - assets/hobbies/skiing.png
+      - assets/hobbies/swim.png
+      - assets/hobbies/swimming.png
+      - assets/hobbies/tennis.png
 
       - assets/default_image.png
   #   - images/a_dot_burr.jpeg

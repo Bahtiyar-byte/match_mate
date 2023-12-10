@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:match_mate/custom_widgets/persons/cards_swipe_widget.dart';
-import 'package:match_mate/screens/interests/tips_screen.dart';
-import 'package:match_mate/datastore/data_context.dart';
+import 'package:match_mate/custom_widgets/menu/match_app_bar_widget.dart';
+import 'package:match_mate/custom_widgets/persons/person_card_widget.dart';
+import 'package:match_mate/custom_widgets/persons/mates_top_list_notifier.dart';
+import 'package:match_mate/custom_widgets/persons/mates_top_list_widget.dart';
 import 'package:match_mate/screens/screen_manager.dart';
 import 'package:provider/provider.dart';
-import 'package:match_mate/custom_widgets/menu/custom_app_bar_widget.dart';
-import 'package:match_mate/custom_widgets/persons/person_card_widget.dart';
-
-import '../../custom_widgets/persons/mates_top_list_notifier.dart';
-import '../../custom_widgets/persons/mates_top_list_widget.dart';
+import 'package:match_mate/datastore/data_context.dart';
 
 class MajorScreen extends StatelessWidget {
   @override
@@ -40,10 +37,10 @@ class _MajorScreenState extends State<_MajorScreenBody> {
     final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.colorScheme.background,
-      body: Consumer<MatesTopListNotifier>(
-        builder: (context, storyNotifier, child) => Column(
+      body: SafeArea(
+        child: Column(
           children: [
-            CustomAppBar(
+            MatchAppBar(
                 isSearchVisible: _isSearchVisible,
                 onSearchToggle: (isVisible) {
                   setState(() {
@@ -52,59 +49,38 @@ class _MajorScreenState extends State<_MajorScreenBody> {
                 }),
             Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
             MatesTopListWidget(people: dataContext.persons),
-            if (storyNotifier.selectedPerson != null)
-              PersonCardWidget(person: storyNotifier.selectedPerson!),
-            Container(height: 1, color: theme.dividerColor, margin: EdgeInsets.symmetric(vertical: 8)),
-            Expanded(child: CardsSwipeWidget(peopleList: dataContext.persons)),
-
-            // Добавляем Padding вокруг Row с кнопками
+            Expanded(
+              child: Consumer<MatesTopListNotifier>(
+                builder: (context, storyNotifier, child) {
+                  return storyNotifier.selectedPerson != null
+                      ? SingleChildScrollView(
+                    child: PersonCardWidget(selectedPerson: storyNotifier.selectedPerson),
+                  )
+                      : Center(child: Text('Select a person to see details'));
+                },
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      ScreenManager.openPersonsScreen(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Theme.of(context).hintColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                      minimumSize: Size(145, 0),
-                    ),
-                    child: Text(
-                      'Find',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
+              child: ElevatedButton(
+                onPressed: () {
+                  ScreenManager.openPersonsScreen(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: theme.hintColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
                   ),
-                  SizedBox(width: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Обработчик нажатия кнопки Google
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Theme.of(context).hintColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                      minimumSize: Size(145, 0),
-                    ),
-                    child: Text(
-                      'Call',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  minimumSize: Size(double.infinity, 0),
+                ),
+                child: Text(
+                  'Find mates',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
                   ),
-                ],
+                ),
               ),
             ),
           ],
